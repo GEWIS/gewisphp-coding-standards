@@ -1,0 +1,29 @@
+{
+    "name": "gewis/gewisphp-coding-standards",
+    "type": "phpcodesniffer-standard",
+    "description": "The GEWISPHP Coding Standard is a set of PHP_CS rules that are applied to PHP projects of Study Association GEWIS.",
+    "keywords": [
+        "gewis",
+        "coding",
+        "standard"
+    ],
+    "homepage": "https://github.com/GEWIS/gewisphp-coding-standards",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0.0",
+        "slevomat/coding-standard": "^8.11",
+        "squizlabs/php_codesniffer": "^3.7.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "GEWISPHPCodingStandards\\": "src/GEWISPHPCodingStandards/"
+        }
+    }
+}
