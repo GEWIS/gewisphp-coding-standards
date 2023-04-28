@@ -635,6 +635,8 @@
         <exclude name="Squiz.Arrays.ArrayDeclaration.KeyNotAligned" />
         <!-- Allow multiple values on a single line -->
         <exclude name="Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed" />
+        <!-- Allow multi-line array with single value -->
+        <exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed" />
         <!-- Disable alignment of braces -->
         <exclude name="Squiz.Arrays.ArrayDeclaration.CloseBraceNotAligned" />
         <!-- Disable alignment of values with opening brace -->
