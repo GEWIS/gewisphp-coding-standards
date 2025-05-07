@@ -175,6 +175,9 @@
         </properties>
     </rule>
 
+    <!-- Enforce consistent enum case spacing -->
+    <rule ref="SlevomatCodingStandard.Classes.EnumCaseSpacing" />
+
     <!-- Add one line around parent call in order to improve readability -->
     <rule ref="SlevomatCodingStandard.Classes.ParentCallSpacing" />
 
@@ -507,7 +510,10 @@
 
     <!-- Forbid use of longhand cast operators -->
     <rule ref="SlevomatCodingStandard.PHP.TypeCast" />
-    
+
+    <!-- Check for missing typehints in case they can be declared natively. Report useless @var annotation (or whole documentation comment) because the type of constant is always clear. -->
+    <rule ref="SlevomatCodingStandard.TypeHints.ClassConstantTypeHint" />    
+
     <!-- Require presence of declare(strict_types=1) -->
     <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
         <properties>
@@ -585,10 +591,11 @@
         </properties>
     </rule>
 
-    <!-- Define unions style -->
-    <rule ref="SlevomatCodingStandard.TypeHints.UnionTypeHintFormat">
+    <!-- Define DNF style -->
+    <rule ref="SlevomatCodingStandard.TypeHints.DNFTypeHintFormat">
         <properties>
-            <property name="withSpaces" value="no" />
+            <property name="withSpacesAroundOperators" value="no" />
+            <property name="withSpacesInsideParentheses" value="no" />
             <property name="shortNullable" value="yes" />
             <property name="nullPosition" value="last" />
         </properties>
