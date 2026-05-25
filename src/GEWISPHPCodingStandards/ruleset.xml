@@ -380,8 +380,8 @@
     <!-- Require language constructs without parentheses -->
     <rule ref="SlevomatCodingStandard.ControlStructures.LanguageConstructWithParentheses" />
 
-    <!-- Require new without parentheses -->
-    <rule ref="SlevomatCodingStandard.ControlStructures.NewWithoutParentheses" />
+    <!-- Require new with parentheses -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.NewWithParentheses" />
 
     <!-- Require consistent formatting of conditions: each condition part on a new line -->
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireMultiLineCondition">
