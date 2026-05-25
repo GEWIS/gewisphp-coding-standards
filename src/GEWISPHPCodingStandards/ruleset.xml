@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset
-    name="GEWISPHPCodingStandards"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="../../vendor/squizlabs/php_codesniffer/phpcs.xsd"
+        name="GEWISPHPCodingStandards"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../vendor/squizlabs/php_codesniffer/phpcs.xsd"
 >
     <description>The GEWISPHP Coding Standards for all PHP projects of Study Association GEWIS.</description>
 
@@ -142,11 +142,20 @@
     <!-- Require PHPDoc always before attributes -->
     <rule ref="SlevomatCodingStandard.Attributes.RequireAttributeAfterDocComment" />
 
+    <!-- Attributes should not be instantiated with parentheses if they have no arguments -->
+    <rule ref="Universal.Attributes.DisallowAttributeParentheses" />
+
+    <!-- Require trailing comma in multi-line attributes -->
+    <rule ref="Universal.Attributes.TrailingComma" />
+
+    <!-- Require comma after last element in multi-line arrays, but not in single-line arrays -->
+    <rule ref="NormalizedArrays.Arrays.CommaAfterLast" />
+
     <!-- Require that single line arrays have the correct spacing: no space around brackets and one space after comma -->
-    <rule ref="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace" />
+    <!-- <rule ref="SlevomatCodingStandard.Arrays.SingleLineArrayWhitespace" /> -->
 
     <!-- Require comma after last element in multi-line array -->
-    <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma" />
+    <!-- <rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma" /> -->
 
     <!-- Require no space before : and 1 space before Enum type -->
     <rule ref="SlevomatCodingStandard.Classes.BackedEnumTypeSpacing" />
@@ -158,6 +167,9 @@
         </properties>
     </rule>
 
+    <!-- Require order of class keywords: (abstract | final) readonly class -->
+    <rule ref="SlevomatCodingStandard.Classes.ClassKeywordOrder" />
+
     <!-- Enforce consistent constant spacing -->
     <rule ref="SlevomatCodingStandard.Classes.ConstantSpacing" />
 
@@ -166,6 +178,9 @@
 
     <!-- Forbid more than one constant declared per statement -->
     <rule ref="SlevomatCodingStandard.Classes.DisallowMultiConstantDefinition" />
+
+    <!-- Forbid string expression property fetch ($foo->{'bar'}) -->
+    <rule ref="SlevomatCodingStandard.Classes.DisallowStringExpressionPropertyFetch" />
 
     <!-- Forbid empty lines around type declarations -->
     <rule ref="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces">
@@ -204,6 +219,9 @@
 
     <!-- Forbid uses of multiple traits separated by comma -->
     <rule ref="SlevomatCodingStandard.Classes.TraitUseDeclaration" />
+
+    <!-- Require alphabetical order of trait use statements -->
+    <rule ref="SlevomatCodingStandard.Classes.TraitUseOrder" />
 
     <!-- Require no spaces before trait use, between trait uses and one space after trait uses -->
     <rule ref="SlevomatCodingStandard.Classes.TraitUseSpacing">
@@ -338,6 +356,9 @@
     <!-- Require usage of yoda conditions -->
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireYodaComparison" />
 
+    <!-- Require ternary expressions that are multi-line to be formatted with the ? and : at the start of the line -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.DisallowTrailingMultiLineTernaryOperator" />
+
     <!-- Require usage of early exit -->
     <rule ref="SlevomatCodingStandard.ControlStructures.EarlyExit" />
 
@@ -359,6 +380,20 @@
     <!-- Require language constructs without parentheses -->
     <rule ref="SlevomatCodingStandard.ControlStructures.LanguageConstructWithParentheses" />
 
+    <!-- Require new without parentheses -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.NewWithoutParentheses" />
+
+    <!-- Require consistent formatting of conditions: each condition part on a new line -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireMultiLineCondition">
+        <properties>
+            <property name="minLineLength" value="0" />
+            <property name="alwaysSplitAllConditionParts" value="true" />
+        </properties>
+    </rule>
+
+    <!-- Require consistent formatting of ternary operators: each part on a new line -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator" />
+    
     <!-- Require usage of null coalesce operator equal operator when possible -->
     <rule ref="SlevomatCodingStandard.ControlStructures.RequireNullCoalesceEqualOperator" />
 
@@ -421,7 +456,11 @@
     </rule>
 
     <!-- Require multiline arguments in function calls -->
-    <rule ref="SlevomatCodingStandard.Functions.RequireMultiLineCall" />
+    <rule ref="SlevomatCodingStandard.Functions.RequireMultiLineCall">
+        <properties>
+            <property name="minParametersCount" value="2" />
+        </properties>
+    </rule>
 
     <!-- Require trailing commas in multiline function calls -->
     <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInCall" />
@@ -512,7 +551,7 @@
     <rule ref="SlevomatCodingStandard.PHP.TypeCast" />
 
     <!-- Check for missing typehints in case they can be declared natively. Report useless @var annotation (or whole documentation comment) because the type of constant is always clear. -->
-    <rule ref="SlevomatCodingStandard.TypeHints.ClassConstantTypeHint" />    
+    <rule ref="SlevomatCodingStandard.TypeHints.ClassConstantTypeHint" />
 
     <!-- Require presence of declare(strict_types=1) -->
     <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
@@ -525,18 +564,22 @@
     </rule>
 
     <!-- Forbid useless parentheses -->
-    <rule ref="SlevomatCodingStandard.PHP.UselessParentheses" />
+    <rule ref="SlevomatCodingStandard.PHP.UselessParentheses">
+        <properties>
+            <property name="enableCheckAroundNew" value="true" />
+        </properties>
+    </rule>
 
     <!-- Forbid useless semicolon `;` -->
     <rule ref="SlevomatCodingStandard.PHP.UselessSemicolon" />
 
     <!-- Require /* @var type $foo */ and similar simple inline annotations to be replaced by assert() -->
-    <!-- <rule ref="SlevomatCodingStandard.PHP.RequireExplicitAssertion">
+    <rule ref="SlevomatCodingStandard.PHP.RequireExplicitAssertion">
         <properties>
             <property name="enableAdvancedStringTypes" value="true" />
             <property name="enableIntegerRanges" value="true" />
         </properties>
-    </rule> -->
+    </rule>
 
     <!-- Require use of short versions of scalar types (i.e. int instead of integer) -->
     <rule ref="SlevomatCodingStandard.TypeHints.LongTypeHints" />
@@ -622,6 +665,9 @@
     <!-- Forbid useless inherit doc comment -->
     <rule ref="SlevomatCodingStandard.Commenting.UselessInheritDocComment" />
 
+    <!-- Forbid multiple doc comments for the same element, they must be joined -->
+    <rule ref="SlevomatCodingStandard.Commenting.RequireOneDocComment" />
+
     <!-- Forbid duplicated variables assignments -->
     <rule ref="SlevomatCodingStandard.Variables.DuplicateAssignmentToVariable" />
 
@@ -641,7 +687,7 @@
         <!-- Uses indentation of only single space -->
         <exclude name="Squiz.Arrays.ArrayDeclaration.KeyNotAligned" />
         <!-- Allow multiple values on a single line -->
-        <exclude name="Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed" />
+        <!-- <exclude name="Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed" /> -->
         <!-- Allow multi-line array with single value -->
         <exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed" />
         <!-- Disable alignment of braces -->
