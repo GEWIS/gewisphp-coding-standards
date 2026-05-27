@@ -8,6 +8,11 @@ on:
                 default: '8.5'
                 required: false
                 type: 'string'
+            extensions:
+                 description: 'Comma-separated list of additional PHP extensions to install'
+                 default: ''
+                 required: false
+                 type: 'string'
 
 jobs:
     php-codesniffer:
@@ -29,6 +34,7 @@ jobs:
                 uses: shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc # v2.37.1
                 with:
                     php-version: '${{ matrix.php-version }}'
+                    extensions: '${{ inputs.extensions }}'
                     tools: cs2pr
 
             -   name: Install dependencies with Composer
